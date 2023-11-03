@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+    <header>
+        <a href="#" class="logo">Nery López</a>
+
+        <nav class="navbar">
+            <ul>
+                <li><a href="#home" class="active">Inicio</a></li>
+                <li><a href="#course" >Videos</a></li>
+            </ul>
+            
+        </nav>
+        <div class="fas fa-bars"></div>
+    </header>
+
+    <section class="home" id="home">
+        <div class="content">
+            <h1>Servidor Web</h1>
+            <p>Este servidor fue creado para compartir archivos multimedia en internet</p>
+            <a href="#"><button>Descubre mas</button></a>
+        </div>
+    </section>
+
+
+    <section class="product" id="product">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>Imagen 1</h3>
+                <p>Imagen numero 1</p>
+                <img height="180" src="images/img1.jpg" alt="">
+            </div>
+
+            <div class="box">
+                <h3>Imagen 2</h3>
+                <p>Imagen numero 2</p>
+                <img height="180" src="images/img2.jpg" alt="">
+            </div>
+
+            <div class="box">
+                <h3>Imagen 3</h3>
+                <p>Imagen numero 3</p>
+                <img height="180" width="200" src="images/img3.jpg" alt="">
+            </div>
+
+        </div>
+
+        <a href="#"><button>Ver mas</button></a>
+
+    </section>
+
+    <section class="course" id="course">
+
+        <h1 class="heading">Videos</h1>
+        <h3 class="title">Seccion para descargar videos</h3>
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>Video 1</h3>
+                <p>Primer video</p>
+                <video controls width="180" height="150" src="images/video1.mp4" type="mp4"></video>
+            </div>
+
+            <div class="box">
+                <h3>video 2</h3>
+                <p>Segundo video</p>
+                <video controls width="180" height="150" src="images/video2.mp4" type="mp4"></video>
+            </div>
+
+            <div class="box">
+                <h3>Video 3</h3>
+                <p>Video numero 3</p>
+                <video controls width="180" height="150" src="images/video3.mp4" type="mp4"></video>
+            </div>
+
+
+        </div>
+
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+
+        $(document).ready(function() {
+
+            $('.fa-bars').click(function() {
+
+                $(this).toggleClass('fa-times');
+                $('.navbar').toggleClass('nav-toggle');
+
+            });
+
+            $(window).on('scroll load', function() {
+
+                $('.fa-bars').removeClass('fa-times');
+                $('.navbar').removeClass('nav-toggle');
+
+                $('section').each(function() {
+
+                    var id = $(this).attr('id');
+                    var height = $(this).height();
+                    var offset = $(this).offset().top -200;
+                    var top = $(window).scrollTop();
+
+                    if(top >= offset && top < offset + height) {
+                        $('.navbar ul li a').removeClass('active');
+                        $('.navbar').find('[href="#'+id+'"]').addClass('active');
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+    
+</body>
+</html>
